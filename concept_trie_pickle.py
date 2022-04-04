@@ -14,7 +14,7 @@ data_folder = Path("./")
 # the number of concept map items, determined by unzipping all_concept_ids.tsv.xz
 # and counting the number of lines (-1 for the header)
 # (this is used to display a progress bar with an estimate of the processing time)
-APPROX_CONCEPT_LINES = 39446071
+APPROX_CONCEPT_LINES = 39446070
 
 def get_concept_lines():
     with lzma.open(data_folder / Path("all_concept_ids.tsv.xz"), "rt") as fp:
