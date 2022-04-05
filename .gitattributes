@@ -4,3 +4,4 @@
 *model.trainables.syn1neg.npy filter=lfs diff=lfs merge=lfs -text
 *.wordvectors filter=lfs diff=lfs merge=lfs -text
 *.wordvectors.vectors.npy filter=lfs diff=lfs merge=lfs -text
+concept_trie.pkl filter=lfs diff=lfs merge=lfs -text
