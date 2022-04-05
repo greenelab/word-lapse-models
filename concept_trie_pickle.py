@@ -25,12 +25,18 @@ def get_concept_lines():
             yield row
 
 def create_concept_trie():
+    # load up the vocab so we can intersect it against the concept map
+    with open(data_folder / Path("full_vocab.txt")) as vocab_fp:
+        full_vocab = set(x.strip() for x in vocab_fp)
+
     concept_trie_pickle = data_folder / Path("concept_trie.pkl")
 
     print("regenerating concept trie (this will take a while)...")
     concept_trie = CharTrie()
     for row in tqdm(get_concept_lines(), total=APPROX_CONCEPT_LINES):
-        concept_trie[row["concept"]] = row["concept_id"]
+        if row["concept_id"].strip() not in full_vocab:
+            continue
+        concept_trie[row["concept"].strip()] = row["concept_id"].strip()
 
     print("...writing pickle...")
     with open(concept_trie_pickle, "wb") as fp:
