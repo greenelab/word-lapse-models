@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 
+import pickle
 import re
 
 from pathlib import Path
 from gensim.models import Word2Vec
+from pygtrie import PrefixSet
 
 # the root for the word-lapse-models datafiles
 data_folder = Path("./")
 
-def get_all_year_models(use_keyedvec=True):
+def get_all_year_models(use_keyedvec=True, make_picked_trie=True):
     model_suffix = "model"
 
     def extract_year(k):
@@ -36,6 +38,19 @@ def get_all_year_models(use_keyedvec=True):
 
     with open("full_vocab.txt", "w") as fp:
         fp.writelines(f"{x}\n" for x in total_vocab)
+
+    if make_picked_trie:
+        vocab_pickle_path = data_folder / Path("vocab_trie.pkl")
+
+        print("Creating vocab trie and pickling it to %s..." % vocab_pickle_path)
+        vocab_trie = PrefixSet()
+        for line in total_vocab:
+            vocab_trie.add(line)
+            
+        with open(vocab_pickle_path, "wb") as fp:
+            pickle.dump(vocab_trie, fp)
+        
+        print("...done!")
 
 def main():
     get_all_year_models()
