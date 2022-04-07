@@ -5,3 +5,4 @@
 *.wordvectors filter=lfs diff=lfs merge=lfs -text
 *.wordvectors.vectors.npy filter=lfs diff=lfs merge=lfs -text
 concept_trie.pkl filter=lfs diff=lfs merge=lfs -text
+concept_dict.pkl filter=lfs diff=lfs merge=lfs -text
