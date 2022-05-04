@@ -6,3 +6,5 @@
 *.wordvectors.vectors.npy filter=lfs diff=lfs merge=lfs -text
 concept_trie.pkl filter=lfs diff=lfs merge=lfs -text
 concept_dict.pkl filter=lfs diff=lfs merge=lfs -text
+vocab_trie.pkl filter=lfs diff=lfs merge=lfs -text
+full_vocab.txt filter=lfs diff=lfs merge=lfs -text
