@@ -11,10 +11,10 @@ from pygtrie import CharTrie
 data_folder = Path("./")
 
 def get_all_year_models(use_keyedvec=True, make_picked_trie=True):
-    model_suffix = "model"
+    model_suffix = ".model"
 
     def extract_year(k):
-        return re.search(r"(\d+)_(\d)[^.]*\.%s" % model_suffix, str(k)).group(1)
+        return re.search(r"(\d+)_(\d)[^.]*%s" % model_suffix, str(k)).group(1)
 
     # first, produce a list of word models sorted by year
     # (groupby requires a sorted list, since it accumulates groups linearly)
